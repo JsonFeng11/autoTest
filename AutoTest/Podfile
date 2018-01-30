@@ -1,0 +1,5 @@
+
+
+target "AutoTest" do
+   pod 'YYKit'
+end
