@@ -8,15 +8,19 @@
 
 #import "NSObject+DDClassInfo.h"
 
-
+static const void *tagKey = &tagKey;
 @implementation NSObject (DDClassInfo)
-
+//@dynamic classInfo;
 
 - (void)initData {
-    NSLog(@"%@", NSStringFromClass([self class]));
-    self.classInfo = [YYClassInfo classInfoWithClassName:NSStringFromClass([self class])];
+    self.classInfo = [YYClassInfo classInfoWithClass:[self class]];
+    NSLog(@"%@", self.classInfo.methodInfos);
 }
 - (void)setClassInfo:(YYClassInfo *)classInfo {
-    classInfo  = classInfo;
+    objc_setAssociatedObject(self, tagKey, classInfo, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+}
+- (YYClassInfo *)classInfo {
+    return objc_getAssociatedObject(self, tagKey);
 }
 @end

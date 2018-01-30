@@ -28,6 +28,9 @@
 - (void)test01 {
     TestViewController *tvc = [[TestViewController alloc] init];
     [tvc initData];
-    NSLog(@"%@", tvc.classInfo.methodInfos);
+    
+    [tvc performSelector:tvc.classInfo.methodInfos[@"printWhoareyou"].sel];
+    [tvc performSelector:tvc.classInfo.methodInfos[@"printSumWitha:b:"].sel withObject:@(10)];
+//    NSLog(@"%@", tvc.classInfo.methodInfos);
 }
 @end
