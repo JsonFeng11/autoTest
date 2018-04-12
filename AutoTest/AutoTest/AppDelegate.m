@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "TestBuilder.h"
+#import "NSObject+Analyse.h"
+#import "AppDelegate+DDLogReport.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [TestBuilder sharedManager];
+//    [self performSelector:@selector(analyseLog) withObject:nil afterDelay:0];
+//    [TestBuilder sharedManager];
     return YES;
 }
 
@@ -48,6 +51,10 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+- (void)setAnalyseParams:(NSMutableDictionary *)analyseParams {
+//    _analyseParams = analyseParams;
+    NSLog(@"88888");
 }
 
 

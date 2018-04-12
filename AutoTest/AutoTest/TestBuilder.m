@@ -30,7 +30,7 @@
     [tvc initData];
     
     [tvc performSelector:tvc.classInfo.methodInfos[@"printWhoareyou"].sel];
-    [tvc performSelector:tvc.classInfo.methodInfos[@"printSumWitha:b:"].sel withObject:@(10)];
+    [tvc performSelector:tvc.classInfo.methodInfos[@"printSumWitha:b:"].sel withObject:@{@"a" : @"20", @"b" : @"30"}];
 //    NSLog(@"%@", tvc.classInfo.methodInfos);
 }
 @end

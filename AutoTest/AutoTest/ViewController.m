@@ -9,7 +9,8 @@
 #import "ViewController.h"
 #import "TestViewController.h"
 #import "RunViewController.h"
-
+#import "NSObject+Analyse.h"
+#import "jisuanqi.h"
 
 #define TEST 1
 @interface ViewController ()
@@ -29,8 +30,20 @@
     [btn addTarget:self action:@selector(aaa) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:btn];
     
+    [self addObserver:self
+           forKeyPath:@"number"
+              options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+              context:nil];
+    //字典
+    [self test01];
     
+    NSLog(@"----%ld", [self getNum:22]);
+    jisuanqi *jj = [[jisuanqi alloc] init];
+    jj.add(12).multiply(66).divide(3);
+    NSLog(@"%d", jj.result);
     
+    NSDictionary *dic = @{@"a" : @"1"};
+    NSLog(@"%@", [dic objectForKey:@"b"]);
 }
 
 
@@ -50,5 +63,13 @@
     [self.navigationController pushViewController:tVC animated:YES];
 //    }
 }
-
+- (void)test01 {
+    NSDictionary *dic = @{@"a" : @"1",
+                          @"b" : @"",
+                          @"c" : @"3",
+                          @"d" : @"4"
+                          
+                          };
+    NSLog(@"%@", dic);
+}
 @end
